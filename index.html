@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orb Chain Battle</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%237bdff2'/%3E%3Cpath d='M32 12l5 15 15 5-15 5-5 15-5-15-15-5 15-5z' fill='%23101522'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="game">
+      <section class="hero">
+        <p class="eyebrow">Browser Puzzle RPG</p>
+        <h1>Orb Chain Battle</h1>
+        <p class="description">
+          オーブをドラッグして入れ替え、同じ色を3つ以上そろえて敵にダメージを与えよう。
+        </p>
+      </section>
+
+      <section class="battle-panel" aria-label="Battle status">
+        <div class="fighter">
+          <div class="fighter-header">
+            <span>Player</span>
+            <strong id="playerHpText">1000 / 1000</strong>
+          </div>
+          <div class="hp-bar" aria-hidden="true">
+            <div id="playerHpBar" class="hp-fill player"></div>
+          </div>
+        </div>
+
+        <div class="enemy-card" aria-label="Enemy">
+          <div class="enemy-icon" aria-hidden="true">◆</div>
+          <div>
+            <h2>Crystal Beast</h2>
+            <p>攻撃力: <span id="enemyAttackText">120</span></p>
+          </div>
+        </div>
+
+        <div class="fighter">
+          <div class="fighter-header">
+            <span>Enemy</span>
+            <strong id="enemyHpText">1500 / 1500</strong>
+          </div>
+          <div class="hp-bar" aria-hidden="true">
+            <div id="enemyHpBar" class="hp-fill enemy"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="play-area">
+        <div class="stats" aria-live="polite">
+          <div>
+            <span class="stat-label">Combo</span>
+            <strong id="comboText">0</strong>
+          </div>
+          <div>
+            <span class="stat-label">Damage</span>
+            <strong id="damageText">0</strong>
+          </div>
+          <div>
+            <span class="stat-label">Turn</span>
+            <strong id="turnText">1</strong>
+          </div>
+        </div>
+
+        <div id="board" class="board" aria-label="Puzzle board"></div>
+
+        <p id="message" class="message" role="status">
+          オーブをドラッグして、隣のマスと入れ替えよう。
+        </p>
+
+        <button id="restartButton" class="restart-button" type="button">Restart</button>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

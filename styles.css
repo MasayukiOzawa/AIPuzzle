@@ -100,6 +100,23 @@ button {
   font-weight: 800;
 }
 
+.player-select-label {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #8f3f7c;
+}
+
+.player-select {
+  margin: 0.3rem 0 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 140, 184, 0.35);
+  background: #ffffff;
+  color: #6f5e8c;
+  font-weight: 800;
+}
+
 .eyebrow,
 .stat-label {
   color: var(--accent);

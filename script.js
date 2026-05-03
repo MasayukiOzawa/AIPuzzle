@@ -659,7 +659,9 @@ function calculateDamage(comboCount, matchedCount) {
   const baseDamage = matchedCount * 18;
   const comboBonus = comboCount * 45;
   const chainBonus = Math.max(0, comboTotal - 1) * 25;
-  return baseDamage + comboBonus + chainBonus;
+  const rawDamage = baseDamage + comboBonus + chainBonus;
+  const powerMultiplier = currentPlayer.attack / 120;
+  return Math.round(rawDamage * powerMultiplier);
 }
 
 function removeMatchedCells(matchedKeys) {

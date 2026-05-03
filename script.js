@@ -23,6 +23,7 @@ const PLAYER_CHARACTERS = [
     id: "lumirun",
     name: "ルミルン",
     title: "ようせいの なまえ",
+    attack: 120,
     heroAvatar: `<svg viewBox="0 0 220 220" role="img" aria-label="きらきらステッキをもったようせい"><circle cx="110" cy="110" r="92" fill="#fff8fd" stroke="#ffffff" stroke-width="10"></circle><path d="M63 112c-25-10-32-31-17-47 15-16 37-6 48 16-10 8-19 18-31 31z" fill="#e7fbff"></path><path d="M157 112c25-10 32-31 17-47-15-16-37-6-48 16 10 8 19 18 31 31z" fill="#e7fbff"></path><path d="M74 73c0-22 16-37 36-37s36 15 36 37v15H74z" fill="#7b8cff"></path><circle cx="88" cy="69" r="18" fill="#8fe3ff"></circle><circle cx="132" cy="69" r="18" fill="#8fe3ff"></circle><circle cx="110" cy="86" r="34" fill="#ffe7cf"></circle><circle cx="97" cy="84" r="4.5" fill="#533a71"></circle><circle cx="123" cy="84" r="4.5" fill="#533a71"></circle><path d="M99 97c6 6 16 6 22 0" fill="none" stroke="#ff7eb6" stroke-linecap="round" stroke-width="5"></path><path d="M84 126c7-8 18-12 26-12s19 4 26 12l8 38H76z" fill="#ff9fcb"></path></svg>`,
     battleAvatar: `<svg viewBox="0 0 120 120" role="img" aria-label="ルミルンのミニアイコン"><circle cx="60" cy="60" r="54" fill="#fff8fd"></circle><path d="M30 60c-12-8-16-19-8-29 8-9 20-5 27 9-8 5-11 10-19 20z" fill="#e7fbff"></path><path d="M90 60c12-8 16-19 8-29-8-9-20-5-27 9 8 5 11 10 19 20z" fill="#e7fbff"></path><circle cx="42" cy="40" r="11" fill="#8fe3ff"></circle><circle cx="78" cy="40" r="11" fill="#8fe3ff"></circle><path d="M36 52c1-18 10-29 24-29s23 11 24 29z" fill="#7b8cff"></path><circle cx="60" cy="54" r="19" fill="#ffe7cf"></circle><circle cx="53" cy="52" r="3.2" fill="#533a71"></circle><circle cx="67" cy="52" r="3.2" fill="#533a71"></circle><path d="M53 62c4 4 10 4 14 0" fill="none" stroke="#ff7eb6" stroke-linecap="round" stroke-width="3.6"></path><path d="M42 79c4-6 10-10 18-10s14 4 18 10l5 17H37z" fill="#ff9fcb"></path></svg>`,
   },
@@ -30,6 +31,7 @@ const PLAYER_CHARACTERS = [
     id: "yuto",
     name: "ユウト",
     title: "たんけんかの なまえ",
+    attack: 135,
     heroAvatar: `<svg viewBox="0 0 220 220" role="img" aria-label="ぼうけんする ユウト"><circle cx="110" cy="110" r="92" fill="#f4f8ff" stroke="#ffffff" stroke-width="10"></circle><path d="M63 90c4-30 20-46 47-46s43 16 47 46l-14 14H77z" fill="#2e3d5c"></path><circle cx="110" cy="105" r="34" fill="#ffe3cf"></circle><circle cx="97" cy="103" r="4.5" fill="#3d2c54"></circle><circle cx="123" cy="103" r="4.5" fill="#3d2c54"></circle><path d="M98 116c6 6 18 6 24 0" fill="none" stroke="#ff8db3" stroke-linecap="round" stroke-width="5"></path><path d="M84 145c7-8 18-12 26-12s19 4 26 12l8 30H76z" fill="#5b8cff"></path><path d="M87 146l-6 20h58l-6-20" fill="#ffffff" opacity="0.75"></path></svg>`,
     battleAvatar: `<svg viewBox="0 0 120 120" role="img" aria-label="ユウトのミニアイコン"><circle cx="60" cy="60" r="54" fill="#f4f8ff"></circle><path d="M33 50c2-19 13-30 27-30s25 11 27 30l-8 8H41z" fill="#2e3d5c"></path><circle cx="60" cy="56" r="21" fill="#ffe3cf"></circle><circle cx="52" cy="54" r="3.1" fill="#3d2c54"></circle><circle cx="68" cy="54" r="3.1" fill="#3d2c54"></circle><path d="M52 64c4 4 12 4 16 0" fill="none" stroke="#ff8db3" stroke-linecap="round" stroke-width="3.5"></path><path d="M40 80c5-7 12-11 20-11s15 4 20 11l4 16H36z" fill="#5b8cff"></path></svg>`,
   },
@@ -229,6 +231,7 @@ const enemyHpBar = document.querySelector("#enemyHpBar");
 const enemyCharacterVisual = document.querySelector("#enemyCharacterVisual");
 const enemyNameText = document.querySelector("#enemyName");
 const enemyAttackText = document.querySelector("#enemyAttackText");
+const playerAttackText = document.querySelector("#playerAttackText");
 const collectionCountText = document.querySelector("#collectionCount");
 const collectionTotalText = document.querySelector("#collectionTotal");
 const collectibleCards = document.querySelectorAll(".collectible-card");
@@ -258,6 +261,7 @@ function buildPartnerFromEnemy(enemy) {
     title: "あらたな なかま",
     heroAvatar: enemy.avatar,
     battleAvatar: enemy.avatar,
+    attack: enemy.attack,
   };
 }
 
@@ -389,6 +393,7 @@ function updateHud() {
   playerHpText.textContent = `${playerHp} / ${MAX_PLAYER_HP}`;
   enemyHpText.textContent = `${enemyHp} / ${MAX_ENEMY_HP}`;
   enemyAttackText.textContent = String(currentEnemy.attack);
+  playerAttackText.textContent = String(currentPlayer.attack);
   playerHpBar.style.width = `${(playerHp / MAX_PLAYER_HP) * 100}%`;
   enemyHpBar.style.width = `${(enemyHp / MAX_ENEMY_HP) * 100}%`;
 }

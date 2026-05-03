@@ -4,14 +4,80 @@ const TILE_TYPES = [
   { name: "ruby", color: "#f95d6a", symbol: "'✦'" },
   { name: "aqua", color: "#39c6f0", symbol: "'◆'" },
   { name: "leaf", color: "#64d96b", symbol: "'✿'" },
+  { name: "sun", color: "#ffbf47", symbol: "'☀'" },
+  { name: "berry", color: "#ff7eb6", symbol: "'♥'" },
+  { name: "mint", color: "#7de2d1", symbol: "'⬟'" },
   { name: "light", color: "#ffd166", symbol: "'●'" },
   { name: "void", color: "#9b5de5", symbol: "'✧'" },
+  { name: "moon", color: "#7b8cff", symbol: "'☾'" },
 ];
 
 const MAX_PLAYER_HP = 1000;
 const MAX_ENEMY_HP = 1500;
-const ENEMY_ATTACK = 120;
 const CASCADE_DELAY = 230;
+const COLLECTION_STORAGE_KEY = "kirakira-collected-rivals";
+
+const ENEMY_CHARACTERS = [
+  {
+    id: "nowarin",
+    name: "ダークスター ノワリン",
+    attack: 120,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="いたずらなダークスターのキャラクター">
+        <defs>
+          <linearGradient id="villainHat" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8d6bff"></stop>
+            <stop offset="100%" stop-color="#ff6fb5"></stop>
+          </linearGradient>
+          <linearGradient id="villainCape" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5b467f"></stop>
+            <stop offset="100%" stop-color="#332243"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#fff1f8"></circle>
+        <path d="M28 48c7-22 24-32 32-32s25 10 32 32l-9 10H37z" fill="url(#villainHat)"></path>
+        <path d="M44 31l16-12 16 12-4 10H48z" fill="#ffd86f"></path>
+        <circle cx="60" cy="57" r="26" fill="#ffe1d3"></circle>
+        <circle cx="49" cy="55" r="4" fill="#533a71"></circle>
+        <circle cx="71" cy="55" r="4" fill="#533a71"></circle>
+        <path d="M48 69c8-10 16-10 24 0" fill="none" stroke="#ff5c9f" stroke-linecap="round" stroke-width="5"></path>
+        <path d="M34 89c7-10 17-16 26-16s19 6 26 16l6 16H28z" fill="url(#villainCape)"></path>
+        <circle cx="32" cy="81" r="5" fill="#8fe3ff"></circle>
+        <circle cx="88" cy="81" r="5" fill="#ffcf5c"></circle>
+      </svg>
+    `,
+  },
+  {
+    id: "mirarouge",
+    name: "ミラルージュ",
+    attack: 135,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="かがみのまほうをつかう ミラルージュ">
+        <defs>
+          <linearGradient id="mirrorHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5ed4ff"></stop>
+            <stop offset="100%" stop-color="#9b5de5"></stop>
+          </linearGradient>
+          <linearGradient id="mirrorDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4b3f72"></stop>
+            <stop offset="100%" stop-color="#22304f"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#eef7ff"></circle>
+        <path d="M31 46c6-18 16-27 29-27s23 9 29 27l-10 10H41z" fill="url(#mirrorHair)"></path>
+        <circle cx="60" cy="54" r="24" fill="#ffe8dd"></circle>
+        <circle cx="50" cy="53" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="53" r="3.8" fill="#533a71"></circle>
+        <path d="M49 67c7-6 15-6 22 0" fill="none" stroke="#7b8cff" stroke-linecap="round" stroke-width="4.5"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#mirrorDress)"></path>
+        <path d="M25 43l14 9-14 9 4-9z" fill="#8fe3ff"></path>
+        <path d="M95 43l-14 9 14 9-4-9z" fill="#ff9fcb"></path>
+        <circle cx="36" cy="80" r="5" fill="#ffd86f"></circle>
+        <circle cx="84" cy="80" r="5" fill="#8fe3ff"></circle>
+      </svg>
+    `,
+  },
+];
 
 const boardElement = document.querySelector("#board");
 const messageElement = document.querySelector("#message");
@@ -22,12 +88,18 @@ const playerHpText = document.querySelector("#playerHpText");
 const enemyHpText = document.querySelector("#enemyHpText");
 const playerHpBar = document.querySelector("#playerHpBar");
 const enemyHpBar = document.querySelector("#enemyHpBar");
+const enemyCharacterVisual = document.querySelector("#enemyCharacterVisual");
+const enemyNameText = document.querySelector("#enemyName");
 const enemyAttackText = document.querySelector("#enemyAttackText");
+const collectionCountText = document.querySelector("#collectionCount");
+const collectibleCards = document.querySelectorAll(".collectible-card");
 const restartButton = document.querySelector("#restartButton");
 
 let board = [];
 let playerHp = MAX_PLAYER_HP;
 let enemyHp = MAX_ENEMY_HP;
+let currentEnemy = ENEMY_CHARACTERS[0];
+let collectedRivals = loadCollectedRivals();
 let turn = 1;
 let comboTotal = 0;
 let damageTotal = 0;
@@ -61,6 +133,7 @@ function createInitialBoard() {
 }
 
 function startGame() {
+  currentEnemy = ENEMY_CHARACTERS[Math.floor(Math.random() * ENEMY_CHARACTERS.length)];
   board = createInitialBoard();
   playerHp = MAX_PLAYER_HP;
   enemyHp = MAX_ENEMY_HP;
@@ -70,7 +143,9 @@ function startGame() {
   locked = false;
   gameOver = false;
   dragState = null;
-  messageElement.textContent = "オーブをドラッグして、隣のマスと入れ替えよう。";
+  messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
+  renderEnemyCard();
+  updateCollectionUI();
   render();
   updateHud();
 }
@@ -120,9 +195,53 @@ function updateHud() {
   turnText.textContent = String(turn);
   playerHpText.textContent = `${playerHp} / ${MAX_PLAYER_HP}`;
   enemyHpText.textContent = `${enemyHp} / ${MAX_ENEMY_HP}`;
-  enemyAttackText.textContent = String(ENEMY_ATTACK);
+  enemyAttackText.textContent = String(currentEnemy.attack);
   playerHpBar.style.width = `${(playerHp / MAX_PLAYER_HP) * 100}%`;
   enemyHpBar.style.width = `${(enemyHp / MAX_ENEMY_HP) * 100}%`;
+}
+
+function renderEnemyCard() {
+  enemyCharacterVisual.innerHTML = currentEnemy.avatar;
+  enemyNameText.textContent = currentEnemy.name;
+}
+
+function loadCollectedRivals() {
+  const rawValue = window.localStorage.getItem(COLLECTION_STORAGE_KEY);
+
+  if (!rawValue) {
+    return new Set();
+  }
+
+  const parsedValue = JSON.parse(rawValue);
+  return new Set(Array.isArray(parsedValue) ? parsedValue : []);
+}
+
+function saveCollectedRivals() {
+  window.localStorage.setItem(
+    COLLECTION_STORAGE_KEY,
+    JSON.stringify(Array.from(collectedRivals))
+  );
+}
+
+function updateCollectionUI() {
+  collectionCountText.textContent = String(collectedRivals.size);
+
+  for (const card of collectibleCards) {
+    const isCollected = collectedRivals.has(card.dataset.characterId);
+    const badge = card.querySelector("[data-collection-badge]");
+
+    card.classList.toggle("is-collected", isCollected);
+    card.classList.toggle("is-locked", !isCollected);
+    badge.textContent = isCollected ? "なかまにした！" : "まだ ライバル";
+  }
+}
+
+function collectCurrentRival() {
+  const alreadyCollected = collectedRivals.has(currentEnemy.id);
+  collectedRivals.add(currentEnemy.id);
+  saveCollectedRivals();
+  updateCollectionUI();
+  return !alreadyCollected;
 }
 
 function cellKey(row, col) {
@@ -165,7 +284,7 @@ function onPointerDown(event) {
     moved: false,
   };
   tile.setPointerCapture(event.pointerId);
-  messageElement.textContent = "ドラッグ中: 隣のオーブを通過すると入れ替わります。";
+  messageElement.textContent = "そのまま となりのマスへ うごかしてね！";
   render();
 }
 
@@ -212,7 +331,7 @@ async function onPointerUp(event) {
   if (moved && !locked && !gameOver) {
     await resolveTurn();
   } else if (!gameOver) {
-    messageElement.textContent = "オーブをドラッグして、隣のマスと入れ替えよう。";
+    messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
   }
 }
 
@@ -275,7 +394,7 @@ async function resolveTurn() {
   locked = true;
   comboTotal = 0;
   damageTotal = 0;
-  messageElement.textContent = "コンボ判定中...";
+  messageElement.textContent = "きえてるよ... つぎは どうなるかな？";
   updateHud();
 
   while (true) {
@@ -303,23 +422,28 @@ async function resolveTurn() {
 
   if (comboTotal > 0) {
     enemyHp = Math.max(0, enemyHp - damageTotal);
-    messageElement.textContent = `${comboTotal} combo! ${damageTotal} damage!`;
+    messageElement.textContent = `${comboTotal} れんさ！ ${damageTotal} パワーの こうげき！`;
   } else {
-    messageElement.textContent = "コンボなし。敵の反撃を受けます。";
+    messageElement.textContent = "そろわなかったよ。 あいてのターン！";
   }
 
   updateHud();
   await wait(CASCADE_DELAY);
 
   if (enemyHp === 0) {
-    endGame("勝利！Restartで再挑戦できます。");
+    const isNewFriend = collectCurrentRival();
+    endGame(
+      isNewFriend
+        ? `やったー！ きみの かち！ ${currentEnemy.name} が なかまに なった！`
+        : `やったー！ きみの かち！ ${currentEnemy.name} は もう なかまだよ！`
+    );
     return;
   }
 
   enemyAttack();
 
   if (playerHp === 0) {
-    endGame("敗北... Restartで再挑戦できます。");
+    endGame("おしい！ もういちど ちょうせんしよう。");
     return;
   }
 
@@ -359,8 +483,8 @@ function collapseAndRefill() {
 }
 
 function enemyAttack() {
-  playerHp = Math.max(0, playerHp - ENEMY_ATTACK);
-  messageElement.textContent += ` 敵の攻撃: ${ENEMY_ATTACK} damage.`;
+  playerHp = Math.max(0, playerHp - currentEnemy.attack);
+  messageElement.textContent += ` ${currentEnemy.name} の こうげきで ${currentEnemy.attack} へった！`;
   updateHud();
 }
 

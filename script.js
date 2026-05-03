@@ -251,12 +251,48 @@ let gameOver = false;
 let dragState = null;
 let currentPlayer = loadPlayerCharacter();
 
+function buildPartnerFromEnemy(enemy) {
+  return {
+    id: enemy.id,
+    name: enemy.name,
+    title: "あらたな なかま",
+    heroAvatar: enemy.avatar,
+    battleAvatar: enemy.avatar,
+  };
+}
+
+function getAvailablePlayerCharacters() {
+  const baseCharacters = [...PLAYER_CHARACTERS];
+  const rivalPartners = ENEMY_CHARACTERS.filter((enemy) => collectedRivals.has(enemy.id)).map(
+    buildPartnerFromEnemy
+  );
+  return [...baseCharacters, ...rivalPartners];
+}
+
+function syncPlayerCharacterSelect() {
+  const availableCharacters = getAvailablePlayerCharacters();
+
+  playerCharacterSelect.innerHTML = availableCharacters
+    .map((character) => `<option value="${character.id}">${character.name}</option>`)
+    .join("");
+
+  if (!availableCharacters.some((character) => character.id === currentPlayer.id)) {
+    currentPlayer = availableCharacters[0];
+    window.localStorage.setItem(PLAYER_CHARACTER_STORAGE_KEY, currentPlayer.id);
+  }
+}
+
 function loadPlayerCharacter() {
   const savedId = window.localStorage.getItem(PLAYER_CHARACTER_STORAGE_KEY);
-  return PLAYER_CHARACTERS.find((character) => character.id === savedId) ?? PLAYER_CHARACTERS[0];
+  return (
+    PLAYER_CHARACTERS.find((character) => character.id === savedId) ??
+    ENEMY_CHARACTERS.filter((enemy) => collectedRivals.has(enemy.id)).map(buildPartnerFromEnemy)[0] ??
+    PLAYER_CHARACTERS[0]
+  );
 }
 
 function applyPlayerCharacter() {
+  syncPlayerCharacterSelect();
   playerCharacterSelect.value = currentPlayer.id;
   playerHeroVisual.innerHTML = currentPlayer.heroAvatar;
   playerBattleVisual.innerHTML = currentPlayer.battleAvatar;
@@ -402,6 +438,7 @@ function collectCurrentRival() {
   collectedRivals.add(currentEnemy.id);
   saveCollectedRivals();
   updateCollectionUI();
+  syncPlayerCharacterSelect();
   return !alreadyCollected;
 }
 
@@ -669,8 +706,9 @@ boardElement.addEventListener("pointerup", onPointerUp);
 boardElement.addEventListener("pointercancel", onPointerCancel);
 restartButton.addEventListener("click", startGame);
 playerCharacterSelect.addEventListener("change", (event) => {
+  const availableCharacters = getAvailablePlayerCharacters();
   currentPlayer =
-    PLAYER_CHARACTERS.find((character) => character.id === event.target.value) ?? PLAYER_CHARACTERS[0];
+    availableCharacters.find((character) => character.id === event.target.value) ?? availableCharacters[0];
   window.localStorage.setItem(PLAYER_CHARACTER_STORAGE_KEY, currentPlayer.id);
   applyPlayerCharacter();
 });

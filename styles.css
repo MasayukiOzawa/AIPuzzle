@@ -43,9 +43,18 @@ button {
   text-align: center;
 }
 
+.partner-panel {
+  margin-bottom: 1rem;
+}
+
 .mascot-wrap {
   display: grid;
   justify-items: center;
+  padding: 1rem 1rem 1.25rem;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  border-radius: 2rem;
+  background: var(--panel);
+  box-shadow: var(--shadow);
 }
 
 .character-chip {

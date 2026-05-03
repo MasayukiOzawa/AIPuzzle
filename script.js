@@ -716,6 +716,7 @@ playerCharacterSelect.addEventListener("change", (event) => {
     availableCharacters.find((character) => character.id === event.target.value) ?? availableCharacters[0];
   window.localStorage.setItem(PLAYER_CHARACTER_STORAGE_KEY, currentPlayer.id);
   applyPlayerCharacter();
+  updateHud();
 });
 
 startGame();

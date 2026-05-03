@@ -13,7 +13,7 @@ const TILE_TYPES = [
 ];
 
 const MAX_PLAYER_HP = 1000;
-const MAX_ENEMY_HP = 1500;
+const MAX_ENEMY_HP = MAX_PLAYER_HP;
 const CASCADE_DELAY = 230;
 const COLLECTION_STORAGE_KEY = "kirakira-collected-rivals";
 const PLAYER_CHARACTER_STORAGE_KEY = "kirakira-player-character";

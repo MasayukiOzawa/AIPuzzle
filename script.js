@@ -77,6 +77,126 @@ const ENEMY_CHARACTERS = [
       </svg>
     `,
   },
+  {
+    id: "flarebell",
+    name: "フレアベル",
+    attack: 145,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="ほのおのリボンをまとう フレアベル">
+        <defs>
+          <linearGradient id="flareHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff9a44"></stop>
+            <stop offset="100%" stop-color="#ff4f81"></stop>
+          </linearGradient>
+          <linearGradient id="flareDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7e2d56"></stop>
+            <stop offset="100%" stop-color="#ff7a59"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#fff3f0"></circle>
+        <path d="M30 46c6-19 17-29 30-29s24 10 30 29l-9 11H39z" fill="url(#flareHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#ffe1d3"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M49 68c7-7 15-7 22 0" fill="none" stroke="#ff5c9f" stroke-linecap="round" stroke-width="4.6"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#flareDress)"></path>
+        <path d="M36 31l11 9-13 6 2-10z" fill="#ffd86f"></path>
+        <path d="M84 31l-11 9 13 6-2-10z" fill="#ffd86f"></path>
+        <circle cx="37" cy="81" r="5" fill="#ffd86f"></circle>
+        <circle cx="83" cy="81" r="5" fill="#ff9fcb"></circle>
+      </svg>
+    `,
+  },
+  {
+    id: "snowshell",
+    name: "スノウシェル",
+    attack: 130,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="こおりのかけらをあやつる スノウシェル">
+        <defs>
+          <linearGradient id="snowHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#a9f1ff"></stop>
+            <stop offset="100%" stop-color="#6f8fff"></stop>
+          </linearGradient>
+          <linearGradient id="snowDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5c70b8"></stop>
+            <stop offset="100%" stop-color="#7de2d1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#eefcff"></circle>
+        <path d="M30 46c7-18 18-28 30-28s23 10 30 28l-10 10H40z" fill="url(#snowHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#fff0e8"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M48 68c8-5 16-5 24 0" fill="none" stroke="#5ed4ff" stroke-linecap="round" stroke-width="4.2"></path>
+        <path d="M37 88c6-10 15-15 23-15s17 5 23 15l4 16H33z" fill="url(#snowDress)"></path>
+        <path d="M26 46l10-8 6 11-13 3z" fill="#ffffff"></path>
+        <path d="M94 46l-10-8-6 11 13 3z" fill="#ffffff"></path>
+        <circle cx="38" cy="81" r="5" fill="#8fe3ff"></circle>
+        <circle cx="82" cy="81" r="5" fill="#ffffff"></circle>
+      </svg>
+    `,
+  },
+  {
+    id: "candyarc",
+    name: "キャンディアーク",
+    attack: 140,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="あまいまほうをつかう キャンディアーク">
+        <defs>
+          <linearGradient id="candyHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff8cc6"></stop>
+            <stop offset="100%" stop-color="#ffcf5c"></stop>
+          </linearGradient>
+          <linearGradient id="candyDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8f3f7c"></stop>
+            <stop offset="100%" stop-color="#ff8cb8"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#fff7ef"></circle>
+        <path d="M30 47c7-19 18-29 30-29s23 10 30 29l-10 10H40z" fill="url(#candyHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#ffe7d7"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M48 68c8-6 16-6 24 0" fill="none" stroke="#ff6fb5" stroke-linecap="round" stroke-width="4.5"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#candyDress)"></path>
+        <circle cx="32" cy="40" r="8" fill="#8fe3ff"></circle>
+        <circle cx="88" cy="40" r="8" fill="#ffd86f"></circle>
+        <path d="M28 40h8M84 40h8" stroke="#ffffff" stroke-linecap="round" stroke-width="3"></path>
+        <circle cx="37" cy="81" r="5" fill="#ffd86f"></circle>
+        <circle cx="83" cy="81" r="5" fill="#8fe3ff"></circle>
+      </svg>
+    `,
+  },
+  {
+    id: "lunashadow",
+    name: "ルナシャドウ",
+    attack: 150,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="つきよのいたずらをしかける ルナシャドウ">
+        <defs>
+          <linearGradient id="lunaHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b8cff"></stop>
+            <stop offset="100%" stop-color="#4a2b72"></stop>
+          </linearGradient>
+          <linearGradient id="lunaDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1f2748"></stop>
+            <stop offset="100%" stop-color="#6e56a0"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#f1f1ff"></circle>
+        <path d="M30 46c7-19 18-29 30-29s23 10 30 29l-10 10H40z" fill="url(#lunaHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#ffe8dd"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M48 69c8-8 16-8 24 0" fill="none" stroke="#8fe3ff" stroke-linecap="round" stroke-width="4.3"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#lunaDress)"></path>
+        <path d="M80 26a10 10 0 1 0 0 20 12 12 0 1 1 0-20z" fill="#ffd86f"></path>
+        <circle cx="37" cy="81" r="5" fill="#8fe3ff"></circle>
+        <circle cx="83" cy="81" r="5" fill="#ffd86f"></circle>
+      </svg>
+    `,
+  },
 ];
 
 const boardElement = document.querySelector("#board");
@@ -92,6 +212,7 @@ const enemyCharacterVisual = document.querySelector("#enemyCharacterVisual");
 const enemyNameText = document.querySelector("#enemyName");
 const enemyAttackText = document.querySelector("#enemyAttackText");
 const collectionCountText = document.querySelector("#collectionCount");
+const collectionTotalText = document.querySelector("#collectionTotal");
 const collectibleCards = document.querySelectorAll(".collectible-card");
 const restartButton = document.querySelector("#restartButton");
 
@@ -224,7 +345,11 @@ function saveCollectedRivals() {
 }
 
 function updateCollectionUI() {
-  collectionCountText.textContent = String(collectedRivals.size);
+  const validEnemyIds = new Set(ENEMY_CHARACTERS.map((enemy) => enemy.id));
+  const collectedCount = Array.from(collectedRivals).filter((id) => validEnemyIds.has(id)).length;
+
+  collectionCountText.textContent = String(collectedCount);
+  collectionTotalText.textContent = String(ENEMY_CHARACTERS.length);
 
   for (const card of collectibleCards) {
     const isCollected = collectedRivals.has(card.dataset.characterId);

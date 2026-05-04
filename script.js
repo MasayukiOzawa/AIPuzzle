@@ -230,7 +230,6 @@ const playerHpBar = document.querySelector("#playerHpBar");
 const enemyHpBar = document.querySelector("#enemyHpBar");
 const miniPlayerHpText = document.querySelector("#miniPlayerHpText");
 const miniEnemyHpText = document.querySelector("#miniEnemyHpText");
-const effectText = document.querySelector("#effectText");
 const enemyCharacterVisual = document.querySelector("#enemyCharacterVisual");
 const enemyNameText = document.querySelector("#enemyName");
 const enemyAttackText = document.querySelector("#enemyAttackText");
@@ -360,7 +359,6 @@ function startGame() {
   gameOver = false;
   dragState = null;
   messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
-  effectText.textContent = "こうげきこうか: まだ ありません";
   boardResultEffectElement.className = "board-result-effect";
   applyPlayerCharacter();
   renderEnemyCard();
@@ -586,7 +584,6 @@ async function onPointerUp(event) {
     await resolveTurn();
   } else if (!gameOver) {
     messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
-  effectText.textContent = "こうげきこうか: まだ ありません";
   boardResultEffectElement.className = "board-result-effect";
   }
 }
@@ -679,13 +676,11 @@ async function resolveTurn() {
   if (comboTotal > 0) {
     enemyHp = Math.max(0, enemyHp - damageTotal);
     messageElement.textContent = `${comboTotal} れんさ！ ${damageTotal} パワーの こうげき！`;
-    effectText.textContent = `こうげきこうか: ${comboTotal}れんさで ${damageTotal} ダメージ！`;
     triggerDamageEffect(enemyCardElement, "is-hit");
     triggerDamageEffect(enemyHpBar, "is-hit");
     popDamage(enemyCardElement, damageTotal);
   } else {
     messageElement.textContent = "そろわなかったよ。 あいてのターン！";
-    effectText.textContent = "こうげきこうか: ミスで ダメージなし";
   }
 
   updateHud();
@@ -751,9 +746,13 @@ function collapseAndRefill() {
 
 
 function showBoardResultEffect(type) {
-  boardResultEffectElement.className = "board-result-effect";
-  void boardResultEffectElement.offsetWidth;
-  boardResultEffectElement.classList.add(type);
+  const label = type === "win" ? "WIN!" : "LOSE...";
+  boardResultEffectElement.textContent = label;
+  boardResultEffectElement.className = `board-result-effect ${type}`;
+  window.setTimeout(() => {
+    boardResultEffectElement.className = "board-result-effect";
+    boardResultEffectElement.textContent = "";
+  }, 1600);
 }
 
 function showBattleResult(type, text) {
@@ -781,7 +780,6 @@ function triggerDamageEffect(target, className) {
 function enemyAttack() {
   playerHp = Math.max(0, playerHp - currentEnemy.attack);
   messageElement.textContent += ` ${currentEnemy.name} の こうげきで ${currentEnemy.attack} へった！`;
-  effectText.textContent = `こうげきこうか: ${currentEnemy.name} の こうげきで ${currentEnemy.attack} ダメージ`;
   triggerDamageEffect(playerFighterElement, "is-hit");
   triggerDamageEffect(playerHpBar, "is-hit");
   popDamage(playerFighterElement, currentEnemy.attack);

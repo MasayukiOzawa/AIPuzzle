@@ -254,6 +254,7 @@ const miniEnemyNameIcon = document.querySelector("#miniEnemyNameIcon");
 const battlePanelElement = document.querySelector(".battle-panel");
 const playerFighterElement = document.querySelector(".player-fighter");
 const enemyCardElement = document.querySelector(".enemy-card");
+const boardResultEffectElement = document.querySelector("#boardResultEffect");
 
 let board = [];
 let playerHp = MAX_PLAYER_HP;
@@ -360,6 +361,7 @@ function startGame() {
   dragState = null;
   messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
   effectText.textContent = "こうげきこうか: まだ ありません";
+  boardResultEffectElement.className = "board-result-effect";
   applyPlayerCharacter();
   renderEnemyCard();
   updateCollectionUI();
@@ -585,6 +587,7 @@ async function onPointerUp(event) {
   } else if (!gameOver) {
     messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
   effectText.textContent = "こうげきこうか: まだ ありません";
+  boardResultEffectElement.className = "board-result-effect";
   }
 }
 
@@ -696,6 +699,7 @@ async function resolveTurn() {
         : `🎉 やったー！ きみの かち！ ${currentEnemy.name} は もう なかまだよ！`
     );
     showBattleResult("win", "WIN!");
+    showBoardResultEffect("win");
     return;
   }
 
@@ -704,6 +708,7 @@ async function resolveTurn() {
   if (playerHp === 0) {
     endGame("💥 やられちゃった… もういちど ちょうせんしよう！");
     showBattleResult("lose", "LOSE...");
+    showBoardResultEffect("lose");
     return;
   }
 
@@ -744,6 +749,12 @@ function collapseAndRefill() {
   }
 }
 
+
+function showBoardResultEffect(type) {
+  boardResultEffectElement.className = "board-result-effect";
+  void boardResultEffectElement.offsetWidth;
+  boardResultEffectElement.classList.add(type);
+}
 
 function showBattleResult(type, text) {
   const badge = document.createElement("div");

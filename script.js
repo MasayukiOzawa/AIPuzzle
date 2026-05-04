@@ -253,6 +253,7 @@ let locked = false;
 let gameOver = false;
 let dragState = null;
 let currentPlayer = loadPlayerCharacter();
+const SWAP_COOLDOWN_MS = 42;
 
 function buildPartnerFromEnemy(enemy) {
   return {
@@ -466,11 +467,6 @@ function swapCells(a, b) {
   board[b.row][b.col] = temp;
 }
 
-function getTileFromPoint(clientX, clientY) {
-  const element = document.elementFromPoint(clientX, clientY);
-  return element?.closest(".tile");
-}
-
 function onPointerDown(event) {
   const tile = event.target.closest(".tile");
 
@@ -484,6 +480,9 @@ function onPointerDown(event) {
     pointerId: event.pointerId,
     row,
     col,
+    startX: event.clientX,
+    startY: event.clientY,
+    lastSwapAt: 0,
     moved: false,
   };
   tile.setPointerCapture(event.pointerId);
@@ -496,20 +495,42 @@ function onPointerMove(event) {
     return;
   }
 
-  const tile = getTileFromPoint(event.clientX, event.clientY);
+  const now = performance.now();
+  if (now - dragState.lastSwapAt < SWAP_COOLDOWN_MS) {
+    return;
+  }
 
-  if (!tile) {
+  const deltaX = event.clientX - dragState.startX;
+  const deltaY = event.clientY - dragState.startY;
+  const horizontalMove = Math.abs(deltaX);
+  const verticalMove = Math.abs(deltaY);
+  const activeTile = boardElement.querySelector(
+    `.tile[data-row="${dragState.row}"][data-col="${dragState.col}"]`
+  );
+  const tileSize = activeTile?.getBoundingClientRect().width ?? 48;
+  const moveThreshold = tileSize * 0.52;
+
+  if (Math.max(horizontalMove, verticalMove) < moveThreshold) {
     return;
   }
 
   const nextCell = {
-    row: Number(tile.dataset.row),
-    col: Number(tile.dataset.col),
+    row: dragState.row + (verticalMove > horizontalMove ? Math.sign(deltaY) : 0),
+    col: dragState.col + (horizontalMove >= verticalMove ? Math.sign(deltaX) : 0),
   };
   const currentCell = {
     row: dragState.row,
     col: dragState.col,
   };
+
+  if (
+    nextCell.row < 0 ||
+    nextCell.row >= ROWS ||
+    nextCell.col < 0 ||
+    nextCell.col >= COLS
+  ) {
+    return;
+  }
 
   if (!isAdjacent(currentCell, nextCell)) {
     return;
@@ -518,6 +539,9 @@ function onPointerMove(event) {
   swapCells(currentCell, nextCell);
   dragState.row = nextCell.row;
   dragState.col = nextCell.col;
+  dragState.startX = event.clientX;
+  dragState.startY = event.clientY;
+  dragState.lastSwapAt = now;
   dragState.moved = true;
   render();
 }

@@ -243,6 +243,14 @@ const playerCharacterSelect = document.querySelector("#playerCharacterSelect");
 const playerHeroVisual = document.querySelector("#playerHeroVisual");
 const playerBattleVisual = document.querySelector("#playerBattleVisual");
 const playerHeroName = document.querySelector("#playerHeroName");
+const playerNameLabel = document.querySelector("#playerNameLabel");
+const enemyNameLabel = document.querySelector("#enemyNameLabel");
+const miniPlayerNameLabel = document.querySelector("#miniPlayerNameLabel");
+const miniEnemyNameLabel = document.querySelector("#miniEnemyNameLabel");
+const playerNameIcon = document.querySelector("#playerNameIcon");
+const enemyNameIcon = document.querySelector("#enemyNameIcon");
+const miniPlayerNameIcon = document.querySelector("#miniPlayerNameIcon");
+const miniEnemyNameIcon = document.querySelector("#miniEnemyNameIcon");
 const battlePanelElement = document.querySelector(".battle-panel");
 const playerFighterElement = document.querySelector(".player-fighter");
 const enemyCardElement = document.querySelector(".enemy-card");
@@ -308,6 +316,10 @@ function applyPlayerCharacter() {
   playerHeroVisual.innerHTML = currentPlayer.heroAvatar;
   playerBattleVisual.innerHTML = currentPlayer.battleAvatar;
   playerHeroName.textContent = `${currentPlayer.title}: ${currentPlayer.name}`;
+  playerNameLabel.textContent = currentPlayer.name;
+  miniPlayerNameLabel.textContent = `${currentPlayer.name} HP`;
+  playerNameIcon.innerHTML = currentPlayer.battleAvatar;
+  miniPlayerNameIcon.innerHTML = currentPlayer.battleAvatar;
 }
 
 function randomType() {
@@ -411,6 +423,10 @@ function updateHud() {
 function renderEnemyCard() {
   enemyCharacterVisual.innerHTML = currentEnemy.avatar;
   enemyNameText.textContent = currentEnemy.name;
+  enemyNameLabel.textContent = currentEnemy.name;
+  miniEnemyNameLabel.textContent = `${currentEnemy.name} HP`;
+  enemyNameIcon.innerHTML = currentEnemy.avatar;
+  miniEnemyNameIcon.innerHTML = currentEnemy.avatar;
 }
 
 function loadCollectedRivals() {

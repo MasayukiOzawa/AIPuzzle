@@ -222,6 +222,28 @@ h1 {
   min-width: 0;
 }
 
+
+.name-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.name-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 0 0 0.08rem rgba(255, 255, 255, 0.95);
+}
+
+.name-icon svg {
+  width: 100%;
+  height: 100%;
+}
 .fighter-header {
   display: flex;
   justify-content: space-between;

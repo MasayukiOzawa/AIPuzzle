@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
     <title>キラキラオーブ だいぼうけん</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%237bdff2'/%3E%3Cpath d='M32 12l5 15 15 5-15 5-5 15-5-15-15-5 15-5z' fill='%23101522'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="styles.css">
@@ -55,7 +56,7 @@
           <div id="playerBattleVisual" class="player-avatar" aria-label="プレイヤーキャラクター"></div>
           <div class="fighter-bars">
             <div class="fighter-header">
-              <span>げんき</span>
+              <span class="name-with-icon"><span id="playerNameIcon" class="name-icon" aria-hidden="true"></span><span id="playerNameLabel">ルミルン</span></span>
               <strong id="playerHpText">1000 / 1000</strong>
             </div>
             <p>いたずらパワー: <span id="playerAttackText">120</span></p>
@@ -76,8 +77,8 @@
 
         <div class="fighter">
           <div class="fighter-header">
-            <span>あいて</span>
-            <strong id="enemyHpText">1500 / 1500</strong>
+            <span class="name-with-icon"><span id="enemyNameIcon" class="name-icon" aria-hidden="true"></span><span id="enemyNameLabel">ダークスター ノワリン</span></span>
+            <strong id="enemyHpText">1000 / 1000</strong>
           </div>
           <div class="hp-bar" aria-hidden="true">
             <div id="enemyHpBar" class="hp-fill enemy"></div>
@@ -103,11 +104,11 @@
 
         <div class="combat-hud" aria-live="polite">
           <div class="combat-hud-row">
-            <span>きみ HP</span>
+            <span class="name-with-icon"><span id="miniPlayerNameIcon" class="name-icon" aria-hidden="true"></span><span id="miniPlayerNameLabel">ルミルン HP</span></span>
             <strong id="miniPlayerHpText">1000 / 1000</strong>
           </div>
           <div class="combat-hud-row">
-            <span>あいて HP</span>
+            <span class="name-with-icon"><span id="miniEnemyNameIcon" class="name-icon" aria-hidden="true"></span><span id="miniEnemyNameLabel">ダークスター ノワリン HP</span></span>
             <strong id="miniEnemyHpText">1000 / 1000</strong>
           </div>
           <p id="effectText" class="effect-text">こうげきこうか: まだ ありません</p>

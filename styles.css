@@ -183,6 +183,30 @@ h1 {
   line-height: 1.6;
 }
 
+
+.tvtk-mascot {
+  width: min(16rem, 70vw);
+  margin: 1rem auto 0;
+  padding: 0.65rem 0.9rem 0.8rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(255,242,252,0.9));
+  box-shadow: 0 0.85rem 1.4rem rgba(141, 125, 255, 0.16);
+}
+
+.tvtk-mascot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tvtk-mascot p {
+  margin-top: 0.2rem;
+  text-align: center;
+  color: #6d5a95;
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
 .hero-badges {
   display: flex;
   flex-wrap: wrap;

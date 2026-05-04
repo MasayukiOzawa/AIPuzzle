@@ -184,6 +184,7 @@ h1 {
 }
 
 .battle-panel {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   gap: 1rem;
@@ -626,4 +627,68 @@ h1 {
   .encyclopedia-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.player-fighter,
+.enemy-card,
+.hp-fill {
+  position: relative;
+}
+
+.is-hit {
+  animation: hitShake 280ms ease;
+  filter: saturate(1.35) brightness(1.08);
+}
+
+.damage-pop {
+  position: absolute;
+  top: -0.5rem;
+  right: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 81, 132, 0.95);
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.78rem;
+  pointer-events: none;
+  animation: damageFloat 900ms ease-out forwards;
+  box-shadow: 0 0.35rem 0.9rem rgba(255, 81, 132, 0.4);
+}
+
+.battle-result {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.8rem, 6vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0.2rem 0 rgba(255,255,255,0.85), 0 0.8rem 1rem rgba(0,0,0,0.18);
+  pointer-events: none;
+  animation: resultPop 1.5s ease forwards;
+  z-index: 4;
+}
+
+.battle-result.win { color: #2bb673; }
+.battle-result.lose { color: #ff5c9f; }
+
+@keyframes hitShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes damageFloat {
+  0% { opacity: 0; transform: translateY(0) scale(0.9); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-2rem) scale(1.05); }
+}
+
+@keyframes resultPop {
+  0% { opacity: 0; transform: translate(-50%, -35%) scale(0.65); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -62%) scale(1); }
 }

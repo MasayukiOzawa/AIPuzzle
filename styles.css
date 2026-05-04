@@ -536,9 +536,10 @@ h1 {
   color: rgba(255, 255, 255, 0.88);
   cursor: grab;
   transition:
-    filter 140ms ease,
-    opacity 140ms ease,
-    transform 140ms ease;
+    filter 180ms ease,
+    opacity 180ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 180ms ease;
 }
 
 .tile::before {
@@ -549,9 +550,15 @@ h1 {
 }
 
 .tile.selected {
-  filter: brightness(1.25);
-  outline: 0.22rem solid rgba(255, 255, 255, 0.95);
-  transform: scale(1.07);
+  filter: brightness(1.18) saturate(1.14);
+  outline: 0.22rem solid rgba(255, 255, 255, 0.98);
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 0.18rem rgba(255, 255, 255, 0.82),
+    0 0 1.1rem rgba(255, 255, 255, 0.75),
+    0 0 1.7rem rgba(255, 126, 182, 0.58),
+    inset 0 0.55rem 0.7rem rgba(255, 255, 255, 0.4),
+    inset 0 -0.45rem 0.7rem rgba(64, 36, 96, 0.22);
 }
 
 .tile.matched {

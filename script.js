@@ -218,6 +218,65 @@ const ENEMY_CHARACTERS = [
     `,
   },
   {
+    id: "gigagao",
+    name: "ギガガオーン",
+    attack: 158,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="おおきなモンスターの ギガガオーン">
+        <circle cx="60" cy="60" r="52" fill="#f3fff1"></circle>
+        <ellipse cx="60" cy="70" rx="34" ry="30" fill="#76c96f"></ellipse>
+        <ellipse cx="60" cy="46" rx="30" ry="24" fill="#8de081"></ellipse>
+        <circle cx="48" cy="50" r="4.5" fill="#2f4f3a"></circle>
+        <circle cx="72" cy="50" r="4.5" fill="#2f4f3a"></circle>
+        <rect x="45" y="61" width="30" height="14" rx="7" fill="#f7fff5"></rect>
+        <rect x="47" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
+        <rect x="55" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
+        <rect x="63" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
+        <rect x="71" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
+        <path d="M32 86c7-9 17-14 28-14s21 5 28 14l4 14H28z" fill="#4f8f56"></path>
+        <path d="M36 33l8-10 7 12-9 6z" fill="#b2f4a4"></path>
+        <path d="M84 33l-8-10-7 12 9 6z" fill="#b2f4a4"></path>
+      </svg>
+    `,
+  },
+  {
+    id: "kagekoro",
+    name: "カゲコロ",
+    attack: 146,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="ようかいキャラクターの カゲコロ">
+        <circle cx="60" cy="60" r="52" fill="#f5f1ff"></circle>
+        <path d="M60 20c18 0 32 15 32 33 0 20-12 35-32 47-20-12-32-27-32-47 0-18 14-33 32-33z" fill="#6e56a0"></path>
+        <circle cx="49" cy="56" r="4" fill="#ffffff"></circle>
+        <circle cx="71" cy="56" r="4" fill="#ffffff"></circle>
+        <path d="M49 72c7-5 15-5 22 0" fill="none" stroke="#8fe3ff" stroke-linecap="round" stroke-width="4"></path>
+        <circle cx="60" cy="38" r="9" fill="#8b6dff"></circle>
+        <path d="M26 52l12 8-12 8 3-8z" fill="#b5a2ff"></path>
+        <path d="M94 52l-12 8 12 8-3-8z" fill="#b5a2ff"></path>
+        <circle cx="40" cy="86" r="5" fill="#8fe3ff"></circle>
+        <circle cx="80" cy="86" r="5" fill="#ffd86f"></circle>
+      </svg>
+    `,
+  },
+  {
+    id: "kakupeta",
+    name: "カクペタ",
+    attack: 139,
+    avatar: `
+      <svg viewBox="0 0 120 120" role="img" aria-label="しかくいほっぺの カクペタ">
+        <circle cx="60" cy="60" r="52" fill="#fff8ef"></circle>
+        <rect x="30" y="26" width="60" height="52" rx="14" fill="#ffd9b8"></rect>
+        <rect x="40" y="48" width="8" height="8" rx="2" fill="#533a71"></rect>
+        <rect x="72" y="48" width="8" height="8" rx="2" fill="#533a71"></rect>
+        <path d="M48 66c8 6 16 6 24 0" fill="none" stroke="#ff8db3" stroke-linecap="round" stroke-width="4"></path>
+        <rect x="36" y="58" width="12" height="12" rx="2" fill="#ffb3c7"></rect>
+        <rect x="72" y="58" width="12" height="12" rx="2" fill="#ffb3c7"></rect>
+        <path d="M34 88c7-10 16-15 26-15s19 5 26 15l5 14H29z" fill="#7de2d1"></path>
+        <rect x="52" y="80" width="16" height="10" rx="2" fill="#ffffff" opacity="0.85"></rect>
+      </svg>
+    `,
+  },
+  {
     id: "hatepyon",
     name: "ハテピョン",
     attack: 142,

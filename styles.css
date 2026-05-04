@@ -80,6 +80,33 @@ button {
   background: linear-gradient(135deg, #6e56a0, #ff6fb5);
 }
 
+
+.enemy-friend-status {
+  margin-top: 0.35rem;
+  font-size: 0.86rem;
+  font-weight: 900;
+  color: #7b6a98;
+}
+
+.enemy-friend-status.is-friend {
+  color: #2f9e63;
+}
+
+.friend-icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(123, 106, 152, 0.14);
+  font-size: 0.88rem;
+  line-height: 1;
+}
+
+.friend-icon.is-friend {
+  background: rgba(125, 216, 125, 0.25);
+}
 .mascot {
   display: inline-grid;
   place-items: center;

@@ -240,6 +240,9 @@ const playerCharacterSelect = document.querySelector("#playerCharacterSelect");
 const playerHeroVisual = document.querySelector("#playerHeroVisual");
 const playerBattleVisual = document.querySelector("#playerBattleVisual");
 const playerHeroName = document.querySelector("#playerHeroName");
+const battlePanelElement = document.querySelector(".battle-panel");
+const playerFighterElement = document.querySelector(".player-fighter");
+const enemyCardElement = document.querySelector(".enemy-card");
 
 let board = [];
 let playerHp = MAX_PLAYER_HP;
@@ -650,6 +653,9 @@ async function resolveTurn() {
   if (comboTotal > 0) {
     enemyHp = Math.max(0, enemyHp - damageTotal);
     messageElement.textContent = `${comboTotal} れんさ！ ${damageTotal} パワーの こうげき！`;
+    triggerDamageEffect(enemyCardElement, "is-hit");
+    triggerDamageEffect(enemyHpBar, "is-hit");
+    popDamage(enemyCardElement, damageTotal);
   } else {
     messageElement.textContent = "そろわなかったよ。 あいてのターン！";
   }
@@ -661,16 +667,18 @@ async function resolveTurn() {
     const isNewFriend = collectCurrentRival();
     endGame(
       isNewFriend
-        ? `やったー！ きみの かち！ ${currentEnemy.name} が なかまに なった！`
-        : `やったー！ きみの かち！ ${currentEnemy.name} は もう なかまだよ！`
+        ? `🎉 やったー！ きみの かち！ ${currentEnemy.name} が なかまに なった！`
+        : `🎉 やったー！ きみの かち！ ${currentEnemy.name} は もう なかまだよ！`
     );
+    showBattleResult("win", "WIN!");
     return;
   }
 
   enemyAttack();
 
   if (playerHp === 0) {
-    endGame("おしい！ もういちど ちょうせんしよう。");
+    endGame("💥 やられちゃった… もういちど ちょうせんしよう！");
+    showBattleResult("lose", "LOSE...");
     return;
   }
 
@@ -711,9 +719,35 @@ function collapseAndRefill() {
   }
 }
 
+
+function showBattleResult(type, text) {
+  const badge = document.createElement("div");
+  badge.className = `battle-result ${type}`;
+  badge.textContent = text;
+  battlePanelElement.append(badge);
+  window.setTimeout(() => badge.remove(), 1500);
+}
+
+function popDamage(target, value, label = "ダメージ") {
+  const pop = document.createElement("div");
+  pop.className = "damage-pop";
+  pop.textContent = `-${value} ${label}`;
+  target.append(pop);
+  window.setTimeout(() => pop.remove(), 900);
+}
+
+function triggerDamageEffect(target, className) {
+  target.classList.remove(className);
+  void target.offsetWidth;
+  target.classList.add(className);
+}
+
 function enemyAttack() {
   playerHp = Math.max(0, playerHp - currentEnemy.attack);
   messageElement.textContent += ` ${currentEnemy.name} の こうげきで ${currentEnemy.attack} へった！`;
+  triggerDamageEffect(playerFighterElement, "is-hit");
+  triggerDamageEffect(playerHpBar, "is-hit");
+  popDamage(playerFighterElement, currentEnemy.attack);
   updateHud();
 }
 

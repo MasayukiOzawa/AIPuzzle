@@ -228,6 +228,9 @@ const playerHpText = document.querySelector("#playerHpText");
 const enemyHpText = document.querySelector("#enemyHpText");
 const playerHpBar = document.querySelector("#playerHpBar");
 const enemyHpBar = document.querySelector("#enemyHpBar");
+const miniPlayerHpText = document.querySelector("#miniPlayerHpText");
+const miniEnemyHpText = document.querySelector("#miniEnemyHpText");
+const effectText = document.querySelector("#effectText");
 const enemyCharacterVisual = document.querySelector("#enemyCharacterVisual");
 const enemyNameText = document.querySelector("#enemyName");
 const enemyAttackText = document.querySelector("#enemyAttackText");
@@ -344,6 +347,7 @@ function startGame() {
   gameOver = false;
   dragState = null;
   messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
+  effectText.textContent = "こうげきこうか: まだ ありません";
   applyPlayerCharacter();
   renderEnemyCard();
   updateCollectionUI();
@@ -396,6 +400,8 @@ function updateHud() {
   turnText.textContent = String(turn);
   playerHpText.textContent = `${playerHp} / ${MAX_PLAYER_HP}`;
   enemyHpText.textContent = `${enemyHp} / ${MAX_ENEMY_HP}`;
+  miniPlayerHpText.textContent = `${playerHp} / ${MAX_PLAYER_HP}`;
+  miniEnemyHpText.textContent = `${enemyHp} / ${MAX_ENEMY_HP}`;
   enemyAttackText.textContent = String(currentEnemy.attack);
   playerAttackText.textContent = String(currentPlayer.attack);
   playerHpBar.style.width = `${(playerHp / MAX_PLAYER_HP) * 100}%`;
@@ -562,6 +568,7 @@ async function onPointerUp(event) {
     await resolveTurn();
   } else if (!gameOver) {
     messageElement.textContent = "オーブを すーっと なぞって うごかそう！";
+  effectText.textContent = "こうげきこうか: まだ ありません";
   }
 }
 
@@ -653,11 +660,13 @@ async function resolveTurn() {
   if (comboTotal > 0) {
     enemyHp = Math.max(0, enemyHp - damageTotal);
     messageElement.textContent = `${comboTotal} れんさ！ ${damageTotal} パワーの こうげき！`;
+    effectText.textContent = `こうげきこうか: ${comboTotal}れんさで ${damageTotal} ダメージ！`;
     triggerDamageEffect(enemyCardElement, "is-hit");
     triggerDamageEffect(enemyHpBar, "is-hit");
     popDamage(enemyCardElement, damageTotal);
   } else {
     messageElement.textContent = "そろわなかったよ。 あいてのターン！";
+    effectText.textContent = "こうげきこうか: ミスで ダメージなし";
   }
 
   updateHud();
@@ -745,6 +754,7 @@ function triggerDamageEffect(target, className) {
 function enemyAttack() {
   playerHp = Math.max(0, playerHp - currentEnemy.attack);
   messageElement.textContent += ` ${currentEnemy.name} の こうげきで ${currentEnemy.attack} へった！`;
+  effectText.textContent = `こうげきこうか: ${currentEnemy.name} の こうげきで ${currentEnemy.attack} ダメージ`;
   triggerDamageEffect(playerFighterElement, "is-hit");
   triggerDamageEffect(playerHpBar, "is-hit");
   popDamage(playerFighterElement, currentEnemy.attack);

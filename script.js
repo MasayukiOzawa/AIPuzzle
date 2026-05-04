@@ -250,6 +250,8 @@ const playerNameIcon = document.querySelector("#playerNameIcon");
 const enemyNameIcon = document.querySelector("#enemyNameIcon");
 const miniPlayerNameIcon = document.querySelector("#miniPlayerNameIcon");
 const miniEnemyNameIcon = document.querySelector("#miniEnemyNameIcon");
+const enemyFriendStatus = document.querySelector("#enemyFriendStatus");
+const miniEnemyFriendBadge = document.querySelector("#miniEnemyFriendBadge");
 const battlePanelElement = document.querySelector(".battle-panel");
 const playerFighterElement = document.querySelector(".player-fighter");
 const enemyCardElement = document.querySelector(".enemy-card");
@@ -420,6 +422,15 @@ function updateHud() {
   enemyHpBar.style.width = `${(enemyHp / MAX_ENEMY_HP) * 100}%`;
 }
 
+function updateEnemyFriendStatus() {
+  const isFriend = collectedRivals.has(currentEnemy.id);
+  enemyFriendStatus.textContent = isFriend ? "なかまにした！" : "まだ ライバル";
+  enemyFriendStatus.classList.toggle("is-friend", isFriend);
+  miniEnemyFriendBadge.textContent = isFriend ? "🤝" : "👿";
+  miniEnemyFriendBadge.classList.toggle("is-friend", isFriend);
+  miniEnemyFriendBadge.setAttribute("aria-label", isFriend ? "なかまになった相手" : "ライバルの相手");
+}
+
 function renderEnemyCard() {
   enemyCharacterVisual.innerHTML = currentEnemy.avatar;
   enemyNameText.textContent = currentEnemy.name;
@@ -427,6 +438,7 @@ function renderEnemyCard() {
   miniEnemyNameLabel.textContent = `${currentEnemy.name} HP`;
   enemyNameIcon.innerHTML = currentEnemy.avatar;
   miniEnemyNameIcon.innerHTML = currentEnemy.avatar;
+  updateEnemyFriendStatus();
 }
 
 function loadCollectedRivals() {
@@ -469,6 +481,7 @@ function collectCurrentRival() {
   collectedRivals.add(currentEnemy.id);
   saveCollectedRivals();
   updateCollectionUI();
+  updateEnemyFriendStatus();
   syncPlayerCharacterSelect();
   return !alreadyCollected;
 }

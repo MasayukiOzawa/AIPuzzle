@@ -17,6 +17,8 @@ const MAX_ENEMY_HP = MAX_PLAYER_HP;
 const CASCADE_DELAY = 230;
 const COLLECTION_STORAGE_KEY = "kirakira-collected-rivals";
 const PLAYER_CHARACTER_STORAGE_KEY = "kirakira-player-character";
+const PLAYER_NAME_STORAGE_KEY = "kirakira-player-name";
+const DEFAULT_PLAYER_NAME = "ぷれいやー";
 
 const PLAYER_CHARACTERS = [
   {
@@ -329,6 +331,7 @@ const collectionTotalText = document.querySelector("#collectionTotal");
 const collectibleCards = document.querySelectorAll(".collectible-card");
 const restartButton = document.querySelector("#restartButton");
 const playerCharacterSelect = document.querySelector("#playerCharacterSelect");
+const playerNameInput = document.querySelector("#playerNameInput");
 const playerHeroVisual = document.querySelector("#playerHeroVisual");
 const playerBattleVisual = document.querySelector("#playerBattleVisual");
 const playerHeroName = document.querySelector("#playerHeroName");
@@ -359,6 +362,7 @@ let locked = false;
 let gameOver = false;
 let dragState = null;
 let currentPlayer = loadPlayerCharacter();
+let currentPlayerName = loadPlayerName();
 const SWAP_COOLDOWN_MS = 42;
 
 function buildPartnerFromEnemy(enemy) {
@@ -402,14 +406,24 @@ function loadPlayerCharacter() {
   );
 }
 
+function normalizePlayerName(value) {
+  return value.trim() || DEFAULT_PLAYER_NAME;
+}
+
+function loadPlayerName() {
+  const savedName = window.localStorage.getItem(PLAYER_NAME_STORAGE_KEY);
+  return normalizePlayerName(savedName ?? DEFAULT_PLAYER_NAME);
+}
+
 function applyPlayerCharacter() {
   syncPlayerCharacterSelect();
   playerCharacterSelect.value = currentPlayer.id;
   playerHeroVisual.innerHTML = currentPlayer.heroAvatar;
   playerBattleVisual.innerHTML = currentPlayer.battleAvatar;
-  playerHeroName.textContent = `${currentPlayer.title}: ${currentPlayer.name}`;
-  playerNameLabel.textContent = currentPlayer.name;
-  miniPlayerNameLabel.textContent = `${currentPlayer.name} HP`;
+  playerHeroName.textContent = `${currentPlayerName} の パートナー: ${currentPlayer.name}`;
+  playerNameLabel.textContent = currentPlayerName;
+  miniPlayerNameLabel.textContent = `${currentPlayerName} HP`;
+  playerNameInput.value = currentPlayerName;
   playerNameIcon.innerHTML = currentPlayer.battleAvatar;
   miniPlayerNameIcon.innerHTML = currentPlayer.battleAvatar;
 }
@@ -913,6 +927,14 @@ playerCharacterSelect.addEventListener("change", (event) => {
   currentPlayer =
     availableCharacters.find((character) => character.id === event.target.value) ?? availableCharacters[0];
   window.localStorage.setItem(PLAYER_CHARACTER_STORAGE_KEY, currentPlayer.id);
+  applyPlayerCharacter();
+  updateHud();
+});
+
+playerNameInput.addEventListener("change", (event) => {
+  currentPlayerName = normalizePlayerName(event.target.value);
+  event.target.value = currentPlayerName;
+  window.localStorage.setItem(PLAYER_NAME_STORAGE_KEY, currentPlayerName);
   applyPlayerCharacter();
   updateHud();
 });

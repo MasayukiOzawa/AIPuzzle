@@ -161,6 +161,7 @@ const collectibleCardsContainer = document.querySelector("#collectibleCardsConta
 const restartButton = document.querySelector("#restartButton");
 const playerCharacterSelect = document.querySelector("#playerCharacterSelect");
 const playerNameInput = document.querySelector("#playerNameInput");
+const playerNameSaveButton = document.querySelector("#playerNameSaveButton");
 const playerHeroVisual = document.querySelector("#playerHeroVisual");
 const playerBattleVisual = document.querySelector("#playerBattleVisual");
 const playerHeroName = document.querySelector("#playerHeroName");
@@ -785,17 +786,21 @@ playerCharacterSelect.addEventListener("change", (event) => {
   updateHud();
 });
 
-playerNameInput.addEventListener("input", (event) => {
-  savePlayerName(event.target.value);
+function commitPlayerName() {
+  savePlayerName(playerNameInput.value);
+  playerNameInput.value = currentPlayerName;
   applyPlayerCharacter();
   updateHud();
-});
+}
 
-playerNameInput.addEventListener("change", (event) => {
-  savePlayerName(event.target.value);
-  event.target.value = currentPlayerName;
-  applyPlayerCharacter();
-  updateHud();
+playerNameSaveButton.addEventListener("click", commitPlayerName);
+playerNameInput.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") {
+    return;
+  }
+
+  event.preventDefault();
+  commitPlayerName();
 });
 
 renderCollectibleCards();

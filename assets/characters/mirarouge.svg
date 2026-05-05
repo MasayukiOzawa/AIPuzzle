@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="かがみのまほうをつかう ミラルージュ">
+        <defs>
+          <linearGradient id="mirrorHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5ed4ff"></stop>
+            <stop offset="100%" stop-color="#9b5de5"></stop>
+          </linearGradient>
+          <linearGradient id="mirrorDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4b3f72"></stop>
+            <stop offset="100%" stop-color="#22304f"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#eef7ff"></circle>
+        <path d="M31 46c6-18 16-27 29-27s23 9 29 27l-10 10H41z" fill="url(#mirrorHair)"></path>
+        <circle cx="60" cy="54" r="24" fill="#ffe8dd"></circle>
+        <circle cx="50" cy="53" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="53" r="3.8" fill="#533a71"></circle>
+        <path d="M49 67c7-6 15-6 22 0" fill="none" stroke="#7b8cff" stroke-linecap="round" stroke-width="4.5"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#mirrorDress)"></path>
+        <path d="M25 43l14 9-14 9 4-9z" fill="#8fe3ff"></path>
+        <path d="M95 43l-14 9 14 9-4-9z" fill="#ff9fcb"></path>
+        <circle cx="36" cy="80" r="5" fill="#ffd86f"></circle>
+        <circle cx="84" cy="80" r="5" fill="#8fe3ff"></circle>
+      </svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="にんげんみたいな かみがたの ハテピョン">
+        <defs>
+          <linearGradient id="hateHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5d4a85"></stop>
+            <stop offset="100%" stop-color="#2f224c"></stop>
+          </linearGradient>
+          <linearGradient id="hateJacket" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#67a7ff"></stop>
+            <stop offset="100%" stop-color="#8b6dff"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#f3f5ff"></circle>
+        <path d="M25 49c4-21 18-34 35-34 18 0 30 13 35 34l-7 10H32z" fill="url(#hateHair)"></path>
+        <path d="M39 40c6-8 12-13 21-13 8 0 14 4 21 13l-2 9H41z" fill="#24183f"></path>
+        <path d="M40 53c2-6 7-9 12-9h16c5 0 10 3 12 9-8-4-16-5-24-5s-16 1-16 5z" fill="#6c5b9b"></path>
+        <circle cx="60" cy="56" r="24" fill="#ffe5d6"></circle>
+        <circle cx="50" cy="55" r="3.8" fill="#3f315e"></circle>
+        <circle cx="70" cy="55" r="3.8" fill="#3f315e"></circle>
+        <path d="M49 68c7 6 15 6 22 0" fill="none" stroke="#ff7eb6" stroke-linecap="round" stroke-width="4.5"></path>
+        <path d="M36 88c6-11 15-16 24-16 8 0 17 5 24 16l4 16H32z" fill="url(#hateJacket)"></path>
+        <path d="M54 77h12l2 11H52z" fill="#ffffff" opacity="0.9"></path>
+        <circle cx="37" cy="81" r="5" fill="#8fe3ff"></circle>
+        <circle cx="83" cy="81" r="5" fill="#ffd86f"></circle>
+      </svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="こおりのかけらをあやつる スノウシェル">
+        <defs>
+          <linearGradient id="snowHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#a9f1ff"></stop>
+            <stop offset="100%" stop-color="#6f8fff"></stop>
+          </linearGradient>
+          <linearGradient id="snowDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5c70b8"></stop>
+            <stop offset="100%" stop-color="#7de2d1"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#eefcff"></circle>
+        <path d="M30 46c7-18 18-28 30-28s23 10 30 28l-10 10H40z" fill="url(#snowHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#fff0e8"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M48 68c8-5 16-5 24 0" fill="none" stroke="#5ed4ff" stroke-linecap="round" stroke-width="4.2"></path>
+        <path d="M37 88c6-10 15-15 23-15s17 5 23 15l4 16H33z" fill="url(#snowDress)"></path>
+        <path d="M26 46l10-8 6 11-13 3z" fill="#ffffff"></path>
+        <path d="M94 46l-10-8-6 11 13 3z" fill="#ffffff"></path>
+        <circle cx="38" cy="81" r="5" fill="#8fe3ff"></circle>
+        <circle cx="82" cy="81" r="5" fill="#ffffff"></circle>
+      </svg>

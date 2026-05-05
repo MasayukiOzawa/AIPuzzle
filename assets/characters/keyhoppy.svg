@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="キーホルダーのキャラクター キーホッピー">
+  <circle cx="60" cy="60" r="52" fill="#f2fffb"/>
+  <circle cx="60" cy="57" r="26" fill="#8fe3ff"/>
+  <circle cx="60" cy="57" r="14" fill="#f9ffff"/>
+  <circle cx="52" cy="56" r="3.6" fill="#36516d"/>
+  <circle cx="68" cy="56" r="3.6" fill="#36516d"/>
+  <path d="M52 68c5 4 11 4 16 0" fill="none" stroke="#ff7eb6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M34 89c6-10 15-15 26-15s20 5 26 15l4 14H30z" fill="#59b7ff"/>
+  <circle cx="35" cy="39" r="8" fill="none" stroke="#ffd86f" stroke-width="4"/>
+  <rect x="43" y="37" width="16" height="4" rx="2" fill="#ffd86f"/>
+  <path d="M76 35l10 10-6 6-10-10z" fill="#ffcf5c"/>
+</svg>

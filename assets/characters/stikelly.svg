@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="ステッキのモンスター スティケリー">
+  <circle cx="60" cy="60" r="52" fill="#f7f3ff"/>
+  <circle cx="60" cy="54" r="24" fill="#ffe8dd"/>
+  <circle cx="50" cy="53" r="3.8" fill="#533a71"/>
+  <circle cx="70" cy="53" r="3.8" fill="#533a71"/>
+  <path d="M49 67c7 5 15 5 22 0" fill="none" stroke="#8fe3ff" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M37 88c6-10 15-15 23-15s17 5 23 15l4 16H33z" fill="#8b6dff"/>
+  <rect x="83" y="30" width="5" height="52" rx="2.5" transform="rotate(18 85 56)" fill="#ffd86f"/>
+  <path d="M90 27l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#ff9fcb"/>
+</svg>

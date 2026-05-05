@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="あまいまほうをつかう キャンディアーク">
+        <defs>
+          <linearGradient id="candyHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff8cc6"></stop>
+            <stop offset="100%" stop-color="#ffcf5c"></stop>
+          </linearGradient>
+          <linearGradient id="candyDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8f3f7c"></stop>
+            <stop offset="100%" stop-color="#ff8cb8"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#fff7ef"></circle>
+        <path d="M30 47c7-19 18-29 30-29s23 10 30 29l-10 10H40z" fill="url(#candyHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#ffe7d7"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M48 68c8-6 16-6 24 0" fill="none" stroke="#ff6fb5" stroke-linecap="round" stroke-width="4.5"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#candyDress)"></path>
+        <circle cx="32" cy="40" r="8" fill="#8fe3ff"></circle>
+        <circle cx="88" cy="40" r="8" fill="#ffd86f"></circle>
+        <path d="M28 40h8M84 40h8" stroke="#ffffff" stroke-linecap="round" stroke-width="3"></path>
+        <circle cx="37" cy="81" r="5" fill="#ffd86f"></circle>
+        <circle cx="83" cy="81" r="5" fill="#8fe3ff"></circle>
+      </svg>

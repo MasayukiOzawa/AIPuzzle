@@ -19,6 +19,8 @@ const COLLECTION_STORAGE_KEY = "kirakira-collected-rivals";
 const PLAYER_CHARACTER_STORAGE_KEY = "kirakira-player-character";
 const PLAYER_NAME_STORAGE_KEY = "kirakira-player-name";
 const DEFAULT_PLAYER_NAME = "ぷれいやー";
+const createAvatarImage = (src, label) =>
+  `<img src="${src}" alt="${label}" class="character-svg-avatar" loading="lazy" decoding="async">`;
 
 const PLAYER_CHARACTERS = [
   {
@@ -44,270 +46,97 @@ const ENEMY_CHARACTERS = [
     id: "nowarin",
     name: "ダークスター ノワリン",
     attack: 120,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="いたずらなダークスターのキャラクター">
-        <defs>
-          <linearGradient id="villainHat" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8d6bff"></stop>
-            <stop offset="100%" stop-color="#ff6fb5"></stop>
-          </linearGradient>
-          <linearGradient id="villainCape" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#5b467f"></stop>
-            <stop offset="100%" stop-color="#332243"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#fff1f8"></circle>
-        <path d="M28 48c7-22 24-32 32-32s25 10 32 32l-9 10H37z" fill="url(#villainHat)"></path>
-        <path d="M44 31l16-12 16 12-4 10H48z" fill="#ffd86f"></path>
-        <circle cx="60" cy="57" r="26" fill="#ffe1d3"></circle>
-        <circle cx="49" cy="55" r="4" fill="#533a71"></circle>
-        <circle cx="71" cy="55" r="4" fill="#533a71"></circle>
-        <path d="M48 69c8-10 16-10 24 0" fill="none" stroke="#ff5c9f" stroke-linecap="round" stroke-width="5"></path>
-        <path d="M34 89c7-10 17-16 26-16s19 6 26 16l6 16H28z" fill="url(#villainCape)"></path>
-        <circle cx="32" cy="81" r="5" fill="#8fe3ff"></circle>
-        <circle cx="88" cy="81" r="5" fill="#ffcf5c"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/nowarin.svg", "いたずらなダークスターのキャラクター"),
   },
   {
     id: "mirarouge",
     name: "ミラルージュ",
     attack: 135,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="かがみのまほうをつかう ミラルージュ">
-        <defs>
-          <linearGradient id="mirrorHair" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#5ed4ff"></stop>
-            <stop offset="100%" stop-color="#9b5de5"></stop>
-          </linearGradient>
-          <linearGradient id="mirrorDress" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#4b3f72"></stop>
-            <stop offset="100%" stop-color="#22304f"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#eef7ff"></circle>
-        <path d="M31 46c6-18 16-27 29-27s23 9 29 27l-10 10H41z" fill="url(#mirrorHair)"></path>
-        <circle cx="60" cy="54" r="24" fill="#ffe8dd"></circle>
-        <circle cx="50" cy="53" r="3.8" fill="#533a71"></circle>
-        <circle cx="70" cy="53" r="3.8" fill="#533a71"></circle>
-        <path d="M49 67c7-6 15-6 22 0" fill="none" stroke="#7b8cff" stroke-linecap="round" stroke-width="4.5"></path>
-        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#mirrorDress)"></path>
-        <path d="M25 43l14 9-14 9 4-9z" fill="#8fe3ff"></path>
-        <path d="M95 43l-14 9 14 9-4-9z" fill="#ff9fcb"></path>
-        <circle cx="36" cy="80" r="5" fill="#ffd86f"></circle>
-        <circle cx="84" cy="80" r="5" fill="#8fe3ff"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/mirarouge.svg", "かがみのまほうをつかう ミラルージュ"),
   },
   {
     id: "flarebell",
     name: "フレアベル",
     attack: 145,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="ほのおのリボンをまとう フレアベル">
-        <defs>
-          <linearGradient id="flareHair" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ff9a44"></stop>
-            <stop offset="100%" stop-color="#ff4f81"></stop>
-          </linearGradient>
-          <linearGradient id="flareDress" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7e2d56"></stop>
-            <stop offset="100%" stop-color="#ff7a59"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#fff3f0"></circle>
-        <path d="M30 46c6-19 17-29 30-29s24 10 30 29l-9 11H39z" fill="url(#flareHair)"></path>
-        <circle cx="60" cy="55" r="24" fill="#ffe1d3"></circle>
-        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
-        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
-        <path d="M49 68c7-7 15-7 22 0" fill="none" stroke="#ff5c9f" stroke-linecap="round" stroke-width="4.6"></path>
-        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#flareDress)"></path>
-        <path d="M36 31l11 9-13 6 2-10z" fill="#ffd86f"></path>
-        <path d="M84 31l-11 9 13 6-2-10z" fill="#ffd86f"></path>
-        <circle cx="37" cy="81" r="5" fill="#ffd86f"></circle>
-        <circle cx="83" cy="81" r="5" fill="#ff9fcb"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/flarebell.svg", "ほのおのリボンをまとう フレアベル"),
   },
   {
     id: "snowshell",
     name: "スノウシェル",
     attack: 130,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="こおりのかけらをあやつる スノウシェル">
-        <defs>
-          <linearGradient id="snowHair" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#a9f1ff"></stop>
-            <stop offset="100%" stop-color="#6f8fff"></stop>
-          </linearGradient>
-          <linearGradient id="snowDress" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#5c70b8"></stop>
-            <stop offset="100%" stop-color="#7de2d1"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#eefcff"></circle>
-        <path d="M30 46c7-18 18-28 30-28s23 10 30 28l-10 10H40z" fill="url(#snowHair)"></path>
-        <circle cx="60" cy="55" r="24" fill="#fff0e8"></circle>
-        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
-        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
-        <path d="M48 68c8-5 16-5 24 0" fill="none" stroke="#5ed4ff" stroke-linecap="round" stroke-width="4.2"></path>
-        <path d="M37 88c6-10 15-15 23-15s17 5 23 15l4 16H33z" fill="url(#snowDress)"></path>
-        <path d="M26 46l10-8 6 11-13 3z" fill="#ffffff"></path>
-        <path d="M94 46l-10-8-6 11 13 3z" fill="#ffffff"></path>
-        <circle cx="38" cy="81" r="5" fill="#8fe3ff"></circle>
-        <circle cx="82" cy="81" r="5" fill="#ffffff"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/snowshell.svg", "こおりのかけらをあやつる スノウシェル"),
   },
   {
     id: "candyarc",
     name: "キャンディアーク",
     attack: 140,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="あまいまほうをつかう キャンディアーク">
-        <defs>
-          <linearGradient id="candyHair" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ff8cc6"></stop>
-            <stop offset="100%" stop-color="#ffcf5c"></stop>
-          </linearGradient>
-          <linearGradient id="candyDress" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8f3f7c"></stop>
-            <stop offset="100%" stop-color="#ff8cb8"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#fff7ef"></circle>
-        <path d="M30 47c7-19 18-29 30-29s23 10 30 29l-10 10H40z" fill="url(#candyHair)"></path>
-        <circle cx="60" cy="55" r="24" fill="#ffe7d7"></circle>
-        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
-        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
-        <path d="M48 68c8-6 16-6 24 0" fill="none" stroke="#ff6fb5" stroke-linecap="round" stroke-width="4.5"></path>
-        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#candyDress)"></path>
-        <circle cx="32" cy="40" r="8" fill="#8fe3ff"></circle>
-        <circle cx="88" cy="40" r="8" fill="#ffd86f"></circle>
-        <path d="M28 40h8M84 40h8" stroke="#ffffff" stroke-linecap="round" stroke-width="3"></path>
-        <circle cx="37" cy="81" r="5" fill="#ffd86f"></circle>
-        <circle cx="83" cy="81" r="5" fill="#8fe3ff"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/candyarc.svg", "あまいまほうをつかう キャンディアーク"),
   },
   {
     id: "lunashadow",
     name: "ルナシャドウ",
     attack: 150,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="つきよのいたずらをしかける ルナシャドウ">
-        <defs>
-          <linearGradient id="lunaHair" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#7b8cff"></stop>
-            <stop offset="100%" stop-color="#4a2b72"></stop>
-          </linearGradient>
-          <linearGradient id="lunaDress" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#1f2748"></stop>
-            <stop offset="100%" stop-color="#6e56a0"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#f1f1ff"></circle>
-        <path d="M30 46c7-19 18-29 30-29s23 10 30 29l-10 10H40z" fill="url(#lunaHair)"></path>
-        <circle cx="60" cy="55" r="24" fill="#ffe8dd"></circle>
-        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
-        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
-        <path d="M48 69c8-8 16-8 24 0" fill="none" stroke="#8fe3ff" stroke-linecap="round" stroke-width="4.3"></path>
-        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#lunaDress)"></path>
-        <path d="M80 26a10 10 0 1 0 0 20 12 12 0 1 1 0-20z" fill="#ffd86f"></path>
-        <circle cx="37" cy="81" r="5" fill="#8fe3ff"></circle>
-        <circle cx="83" cy="81" r="5" fill="#ffd86f"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/lunashadow.svg", "つきよのいたずらをしかける ルナシャドウ"),
   },
   {
     id: "gigagao",
     name: "ギガガオーン",
     attack: 158,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="おおきなモンスターの ギガガオーン">
-        <circle cx="60" cy="60" r="52" fill="#f3fff1"></circle>
-        <ellipse cx="60" cy="70" rx="34" ry="30" fill="#76c96f"></ellipse>
-        <ellipse cx="60" cy="46" rx="30" ry="24" fill="#8de081"></ellipse>
-        <circle cx="48" cy="50" r="4.5" fill="#2f4f3a"></circle>
-        <circle cx="72" cy="50" r="4.5" fill="#2f4f3a"></circle>
-        <rect x="45" y="61" width="30" height="14" rx="7" fill="#f7fff5"></rect>
-        <rect x="47" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
-        <rect x="55" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
-        <rect x="63" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
-        <rect x="71" y="63" width="4" height="8" rx="2" fill="#ffffff"></rect>
-        <path d="M32 86c7-9 17-14 28-14s21 5 28 14l4 14H28z" fill="#4f8f56"></path>
-        <path d="M36 33l8-10 7 12-9 6z" fill="#b2f4a4"></path>
-        <path d="M84 33l-8-10-7 12 9 6z" fill="#b2f4a4"></path>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/gigagao.svg", "おおきなモンスターの ギガガオーン"),
   },
   {
     id: "kagekoro",
     name: "カゲコロ",
     attack: 146,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="ようかいキャラクターの カゲコロ">
-        <circle cx="60" cy="60" r="52" fill="#f5f1ff"></circle>
-        <path d="M60 20c18 0 32 15 32 33 0 20-12 35-32 47-20-12-32-27-32-47 0-18 14-33 32-33z" fill="#6e56a0"></path>
-        <circle cx="49" cy="56" r="4" fill="#ffffff"></circle>
-        <circle cx="71" cy="56" r="4" fill="#ffffff"></circle>
-        <path d="M49 72c7-5 15-5 22 0" fill="none" stroke="#8fe3ff" stroke-linecap="round" stroke-width="4"></path>
-        <circle cx="60" cy="38" r="9" fill="#8b6dff"></circle>
-        <path d="M26 52l12 8-12 8 3-8z" fill="#b5a2ff"></path>
-        <path d="M94 52l-12 8 12 8-3-8z" fill="#b5a2ff"></path>
-        <circle cx="40" cy="86" r="5" fill="#8fe3ff"></circle>
-        <circle cx="80" cy="86" r="5" fill="#ffd86f"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/kagekoro.svg", "ようかいキャラクターの カゲコロ"),
   },
   {
     id: "kakupeta",
     name: "カクペタ",
     attack: 139,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="しかくいほっぺの カクペタ">
-        <circle cx="60" cy="60" r="52" fill="#fff8ef"></circle>
-        <rect x="30" y="26" width="60" height="52" rx="14" fill="#ffd9b8"></rect>
-        <rect x="40" y="48" width="8" height="8" rx="2" fill="#533a71"></rect>
-        <rect x="72" y="48" width="8" height="8" rx="2" fill="#533a71"></rect>
-        <path d="M48 66c8 6 16 6 24 0" fill="none" stroke="#ff8db3" stroke-linecap="round" stroke-width="4"></path>
-        <rect x="36" y="58" width="12" height="12" rx="2" fill="#ffb3c7"></rect>
-        <rect x="72" y="58" width="12" height="12" rx="2" fill="#ffb3c7"></rect>
-        <path d="M34 88c7-10 16-15 26-15s19 5 26 15l5 14H29z" fill="#7de2d1"></path>
-        <rect x="52" y="80" width="16" height="10" rx="2" fill="#ffffff" opacity="0.85"></rect>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/kakupeta.svg", "しかくいほっぺの カクペタ"),
   },
   {
     id: "hatepyon",
     name: "ハテピョン",
     attack: 142,
-    avatar: `
-      <svg viewBox="0 0 120 120" role="img" aria-label="にんげんみたいな かみがたの ハテピョン">
-        <defs>
-          <linearGradient id="hateHair" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#5d4a85"></stop>
-            <stop offset="100%" stop-color="#2f224c"></stop>
-          </linearGradient>
-          <linearGradient id="hateJacket" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#67a7ff"></stop>
-            <stop offset="100%" stop-color="#8b6dff"></stop>
-          </linearGradient>
-        </defs>
-        <circle cx="60" cy="60" r="52" fill="#f3f5ff"></circle>
-        <path d="M25 49c4-21 18-34 35-34 18 0 30 13 35 34l-7 10H32z" fill="url(#hateHair)"></path>
-        <path d="M39 40c6-8 12-13 21-13 8 0 14 4 21 13l-2 9H41z" fill="#24183f"></path>
-        <path d="M40 53c2-6 7-9 12-9h16c5 0 10 3 12 9-8-4-16-5-24-5s-16 1-16 5z" fill="#6c5b9b"></path>
-        <circle cx="60" cy="56" r="24" fill="#ffe5d6"></circle>
-        <circle cx="50" cy="55" r="3.8" fill="#3f315e"></circle>
-        <circle cx="70" cy="55" r="3.8" fill="#3f315e"></circle>
-        <path d="M49 68c7 6 15 6 22 0" fill="none" stroke="#ff7eb6" stroke-linecap="round" stroke-width="4.5"></path>
-        <path d="M36 88c6-11 15-16 24-16 8 0 17 5 24 16l4 16H32z" fill="url(#hateJacket)"></path>
-        <path d="M54 77h12l2 11H52z" fill="#ffffff" opacity="0.9"></path>
-        <circle cx="37" cy="81" r="5" fill="#8fe3ff"></circle>
-        <circle cx="83" cy="81" r="5" fill="#ffd86f"></circle>
-      </svg>
-    `,
+    avatar: createAvatarImage("assets/characters/hatepyon.svg", "にんげんみたいな かみがたの ハテピョン"),
+  },
+  {
+    id: "keyhoppy",
+    name: "キーホッピー",
+    attack: 138,
+    bookDescription: "じゃらじゃら キーホルダーを あつめる モンスター。",
+    bookSkill: "くるくる フックこうげき",
+    bookLike: "きらきら キーホルダー",
+    avatar: createAvatarImage("assets/characters/keyhoppy.svg", "キーホルダーのキャラクター キーホッピー"),
+  },
+  {
+    id: "kanbanon",
+    name: "カンバノン",
+    attack: 148,
+    bookDescription: "おおきな かんばんを せおった モンスター。",
+    bookSkill: "どどんと サインプレス",
+    bookLike: "ピカピカ ひょうしき",
+    avatar: createAvatarImage("assets/characters/kanbanon.svg", "看板のモンスター カンバノン"),
+  },
+  {
+    id: "stikelly",
+    name: "スティケリー",
+    attack: 152,
+    bookDescription: "ながい ステッキを ふりまわす モンスター。",
+    bookSkill: "くるんと ステッキまほう",
+    bookLike: "ほしの かざり",
+    avatar: createAvatarImage("assets/characters/stikelly.svg", "ステッキのモンスター スティケリー"),
+  },
+  {
+    id: "sorami",
+    name: "ソラミ",
+    attack: 144,
+    bookDescription: "えがおが まぶしい にんげんの おんなのこ。",
+    bookSkill: "ハート エール",
+    bookLike: "リボンと おさんぽ",
+    avatar: createAvatarImage("assets/characters/sorami.svg", "人間の女の子のキャラクター ソラミ"),
   },
 ];
 
@@ -328,7 +157,7 @@ const enemyAttackText = document.querySelector("#enemyAttackText");
 const playerAttackText = document.querySelector("#playerAttackText");
 const collectionCountText = document.querySelector("#collectionCount");
 const collectionTotalText = document.querySelector("#collectionTotal");
-const collectibleCards = document.querySelectorAll(".collectible-card");
+const collectibleCardsContainer = document.querySelector("#collectibleCardsContainer");
 const restartButton = document.querySelector("#restartButton");
 const playerCharacterSelect = document.querySelector("#playerCharacterSelect");
 const playerNameInput = document.querySelector("#playerNameInput");
@@ -413,6 +242,11 @@ function normalizePlayerName(value) {
 function loadPlayerName() {
   const savedName = window.localStorage.getItem(PLAYER_NAME_STORAGE_KEY);
   return normalizePlayerName(savedName ?? DEFAULT_PLAYER_NAME);
+}
+
+function savePlayerName(name) {
+  currentPlayerName = normalizePlayerName(name);
+  window.localStorage.setItem(PLAYER_NAME_STORAGE_KEY, currentPlayerName);
 }
 
 function applyPlayerCharacter() {
@@ -563,6 +397,25 @@ function saveCollectedRivals() {
   );
 }
 
+function renderCollectibleCards() {
+  collectibleCardsContainer.innerHTML = ENEMY_CHARACTERS.map(
+    (enemy) => `
+      <article class="encyclopedia-card collectible-card is-locked" data-character-id="${enemy.id}">
+        <div class="character-chip enemy-chip">ライバル</div>
+        <div class="collection-badge" data-collection-badge>まだ ライバル</div>
+        <div class="book-portrait villain-book">${enemy.avatar}</div>
+        <h3>${enemy.name}</h3>
+        <p>${enemy.bookDescription ?? "ふしぎなチカラをもつ モンスター。"}</p>
+        <dl class="book-stats">
+          <div><dt>いたずらパワー</dt><dd>${enemy.attack}</dd></div>
+          <div><dt>とくい</dt><dd>${enemy.bookSkill ?? "わざで びっくり！"}</dd></div>
+          <div><dt>すき</dt><dd>${enemy.bookLike ?? "きらきら アクセ"}</dd></div>
+        </dl>
+      </article>
+    `
+  ).join("");
+}
+
 function updateCollectionUI() {
   const validEnemyIds = new Set(ENEMY_CHARACTERS.map((enemy) => enemy.id));
   const collectedCount = Array.from(collectedRivals).filter((id) => validEnemyIds.has(id)).length;
@@ -570,6 +423,7 @@ function updateCollectionUI() {
   collectionCountText.textContent = String(collectedCount);
   collectionTotalText.textContent = String(ENEMY_CHARACTERS.length);
 
+  const collectibleCards = document.querySelectorAll(".collectible-card");
   for (const card of collectibleCards) {
     const isCollected = collectedRivals.has(card.dataset.characterId);
     const badge = card.querySelector("[data-collection-badge]");
@@ -931,12 +785,18 @@ playerCharacterSelect.addEventListener("change", (event) => {
   updateHud();
 });
 
-playerNameInput.addEventListener("change", (event) => {
-  currentPlayerName = normalizePlayerName(event.target.value);
-  event.target.value = currentPlayerName;
-  window.localStorage.setItem(PLAYER_NAME_STORAGE_KEY, currentPlayerName);
+playerNameInput.addEventListener("input", (event) => {
+  savePlayerName(event.target.value);
   applyPlayerCharacter();
   updateHud();
 });
 
+playerNameInput.addEventListener("change", (event) => {
+  savePlayerName(event.target.value);
+  event.target.value = currentPlayerName;
+  applyPlayerCharacter();
+  updateHud();
+});
+
+renderCollectibleCards();
 startGame();

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="人間の女の子のキャラクター ソラミ">
+  <circle cx="60" cy="60" r="52" fill="#f4f8ff"/>
+  <path d="M31 47c6-20 17-30 29-30s23 10 29 30l-9 10H40z" fill="#5b8cff"/>
+  <circle cx="60" cy="55" r="24" fill="#ffe4d2"/>
+  <circle cx="50" cy="54" r="3.8" fill="#3d2c54"/>
+  <circle cx="70" cy="54" r="3.8" fill="#3d2c54"/>
+  <path d="M49 68c7 6 15 6 22 0" fill="none" stroke="#ff7eb6" stroke-width="4.2" stroke-linecap="round"/>
+  <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="#ff9fcb"/>
+  <circle cx="40" cy="40" r="6" fill="#ffd86f"/>
+  <circle cx="80" cy="40" r="6" fill="#ffd86f"/>
+</svg>

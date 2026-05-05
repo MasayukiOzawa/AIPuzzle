@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="ほのおのリボンをまとう フレアベル">
+        <defs>
+          <linearGradient id="flareHair" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff9a44"></stop>
+            <stop offset="100%" stop-color="#ff4f81"></stop>
+          </linearGradient>
+          <linearGradient id="flareDress" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7e2d56"></stop>
+            <stop offset="100%" stop-color="#ff7a59"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#fff3f0"></circle>
+        <path d="M30 46c6-19 17-29 30-29s24 10 30 29l-9 11H39z" fill="url(#flareHair)"></path>
+        <circle cx="60" cy="55" r="24" fill="#ffe1d3"></circle>
+        <circle cx="50" cy="54" r="3.8" fill="#533a71"></circle>
+        <circle cx="70" cy="54" r="3.8" fill="#533a71"></circle>
+        <path d="M49 68c7-7 15-7 22 0" fill="none" stroke="#ff5c9f" stroke-linecap="round" stroke-width="4.6"></path>
+        <path d="M37 88c6-11 15-16 23-16s17 5 23 16l4 16H33z" fill="url(#flareDress)"></path>
+        <path d="M36 31l11 9-13 6 2-10z" fill="#ffd86f"></path>
+        <path d="M84 31l-11 9 13 6-2-10z" fill="#ffd86f"></path>
+        <circle cx="37" cy="81" r="5" fill="#ffd86f"></circle>
+        <circle cx="83" cy="81" r="5" fill="#ff9fcb"></circle>
+      </svg>

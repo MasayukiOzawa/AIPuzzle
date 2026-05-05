@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="しかくいほっぺの カクペタ">
+        <circle cx="60" cy="60" r="52" fill="#fff8ef"></circle>
+        <rect x="30" y="26" width="60" height="52" rx="14" fill="#ffd9b8"></rect>
+        <rect x="40" y="48" width="8" height="8" rx="2" fill="#533a71"></rect>
+        <rect x="72" y="48" width="8" height="8" rx="2" fill="#533a71"></rect>
+        <path d="M48 66c8 6 16 6 24 0" fill="none" stroke="#ff8db3" stroke-linecap="round" stroke-width="4"></path>
+        <rect x="36" y="58" width="12" height="12" rx="2" fill="#ffb3c7"></rect>
+        <rect x="72" y="58" width="12" height="12" rx="2" fill="#ffb3c7"></rect>
+        <path d="M34 88c7-10 16-15 26-15s19 5 26 15l5 14H29z" fill="#7de2d1"></path>
+        <rect x="52" y="80" width="16" height="10" rx="2" fill="#ffffff" opacity="0.85"></rect>
+      </svg>

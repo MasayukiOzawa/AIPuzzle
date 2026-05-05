@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="いたずらなダークスターのキャラクター">
+        <defs>
+          <linearGradient id="villainHat" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8d6bff"></stop>
+            <stop offset="100%" stop-color="#ff6fb5"></stop>
+          </linearGradient>
+          <linearGradient id="villainCape" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#5b467f"></stop>
+            <stop offset="100%" stop-color="#332243"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="52" fill="#fff1f8"></circle>
+        <path d="M28 48c7-22 24-32 32-32s25 10 32 32l-9 10H37z" fill="url(#villainHat)"></path>
+        <path d="M44 31l16-12 16 12-4 10H48z" fill="#ffd86f"></path>
+        <circle cx="60" cy="57" r="26" fill="#ffe1d3"></circle>
+        <circle cx="49" cy="55" r="4" fill="#533a71"></circle>
+        <circle cx="71" cy="55" r="4" fill="#533a71"></circle>
+        <path d="M48 69c8-10 16-10 24 0" fill="none" stroke="#ff5c9f" stroke-linecap="round" stroke-width="5"></path>
+        <path d="M34 89c7-10 17-16 26-16s19 6 26 16l6 16H28z" fill="url(#villainCape)"></path>
+        <circle cx="32" cy="81" r="5" fill="#8fe3ff"></circle>
+        <circle cx="88" cy="81" r="5" fill="#ffcf5c"></circle>
+      </svg>

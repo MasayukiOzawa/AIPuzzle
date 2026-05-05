@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="ようかいキャラクターの カゲコロ">
+        <circle cx="60" cy="60" r="52" fill="#f5f1ff"></circle>
+        <path d="M60 20c18 0 32 15 32 33 0 20-12 35-32 47-20-12-32-27-32-47 0-18 14-33 32-33z" fill="#6e56a0"></path>
+        <circle cx="49" cy="56" r="4" fill="#ffffff"></circle>
+        <circle cx="71" cy="56" r="4" fill="#ffffff"></circle>
+        <path d="M49 72c7-5 15-5 22 0" fill="none" stroke="#8fe3ff" stroke-linecap="round" stroke-width="4"></path>
+        <circle cx="60" cy="38" r="9" fill="#8b6dff"></circle>
+        <path d="M26 52l12 8-12 8 3-8z" fill="#b5a2ff"></path>
+        <path d="M94 52l-12 8 12 8-3-8z" fill="#b5a2ff"></path>
+        <circle cx="40" cy="86" r="5" fill="#8fe3ff"></circle>
+        <circle cx="80" cy="86" r="5" fill="#ffd86f"></circle>
+      </svg>

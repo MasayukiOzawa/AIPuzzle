@@ -10,16 +10,26 @@
     </linearGradient>
   </defs>
   <circle cx="60" cy="60" r="52" fill="#f3f5ff"></circle>
+
+  <!-- hair: left/right symmetric silhouette -->
   <path d="M26 49c4-22 17-34 34-34s30 12 34 34l-8 10H34z" fill="url(#hateHair)"></path>
-  <path d="M36 43c6-10 14-15 24-15s18 5 24 15l-2 9H38z" fill="#24183f"></path>
-  <path d="M42 53c3-6 8-9 18-9s15 3 18 9c-6-3-12-4-18-4s-12 1-18 4z" fill="#6c5b9b"></path>
-  <circle cx="60" cy="57" r="24" fill="#ffe5d6"></circle>
-  <rect x="44" y="49" width="12" height="2.6" rx="1.3" fill="#3f315e"></rect>
-  <rect x="64" y="49" width="12" height="2.6" rx="1.3" fill="#3f315e"></rect>
-  <circle cx="50" cy="56" r="3.6" fill="#3f315e"></circle>
-  <circle cx="70" cy="56" r="3.6" fill="#3f315e"></circle>
+  <path d="M36 44c6-10 14-15 24-15s18 5 24 15l-2 9H38z" fill="#24183f"></path>
+  <path d="M40 51c5-4 12-6 20-6s15 2 20 6c-6-2-13-3-20-3s-14 1-20 3z" fill="#6c5b9b"></path>
+
+  <!-- face -->
+  <circle cx="60" cy="58" r="24" fill="#ffe5d6"></circle>
+
+  <!-- eyebrows: aligned above each eye -->
+  <rect x="45" y="49" width="11" height="2.8" rx="1.4" fill="#3f315e"></rect>
+  <rect x="64" y="49" width="11" height="2.8" rx="1.4" fill="#3f315e"></rect>
+
+  <!-- eyes -->
+  <circle cx="50" cy="56" r="3.5" fill="#3f315e"></circle>
+  <circle cx="70" cy="56" r="3.5" fill="#3f315e"></circle>
+
   <path d="M60 60v6" fill="none" stroke="#cc9a86" stroke-linecap="round" stroke-width="1.8"></path>
-  <path d="M49 69c6 5 16 5 22 0" fill="none" stroke="#ff7eb6" stroke-linecap="round" stroke-width="4.2"></path>
+  <path d="M49 70c6 5 16 5 22 0" fill="none" stroke="#ff7eb6" stroke-linecap="round" stroke-width="4.2"></path>
+
   <path d="M36 88c6-11 15-16 24-16s18 5 24 16l4 16H32z" fill="url(#hateJacket)"></path>
   <path d="M54 77h12l2 11H52z" fill="#ffffff" opacity="0.9"></path>
   <circle cx="37" cy="81" r="5" fill="#8fe3ff"></circle>
